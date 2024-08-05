@@ -20,7 +20,7 @@ cargo add just-clone url
 
 ## Gratitude
 
-Like the project? [Say thanks!](https://github.com/DenisGorbachev/just-clone/discussions/new?category=gratitude) ❤️
+Like the project? [⭐ Star this repo](https://github.com/DenisGorbachev/just-clone) on GitHub!
 
 ## License
 

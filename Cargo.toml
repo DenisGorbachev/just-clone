@@ -2,5 +2,29 @@
 name = "just-clone"
 version = "0.1.0"
 edition = "2021"
+description = "Clone a repo from any url"
+license = "Apache-2.0 OR MIT"
+homepage = "https://github.com/DenisGorbachev/just-clone"
+repository = "https://github.com/DenisGorbachev/just-clone"
+readme = "README.md"
+keywords = ["utils", "git"]
+categories = ["development-tools"]
+
+[package.metadata.details]
+title = "Clone a repo from any url"
+tagline = ""
+summary = ""
+announcement = ""
 
 [dependencies]
+derive-new = { git = "https://github.com/OmarTawfik-forks/derive-new", branch = "impl-into" } # "0.6.0"
+derive_more = { version = "0.99.18" }
+fmt-derive = "0.1.2"
+derive-getters = { git = "https://git.sr.ht/~dengor/derive-getters", branch = "feature/auto-copy-getters", features = ["auto_copy_getters"] }
+clap = { version = "4.5.13", features = ["derive"] }
+anyhow = "1.0.86"
+url = "2.5.2"
+git2 = "0.19.0"
+crates_io_api = { version = "0.11.0" }
+lazy_static = "1.5.0"
+tokio = { version = "1.39.2", features = ["macros", "rt-multi-thread", "time"] }

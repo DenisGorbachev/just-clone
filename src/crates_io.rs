@@ -1,28 +1,25 @@
-use crates_io_api::SyncClient;
+use crates_io_api::AsyncClient;
 use derive_more::{Display, Error, From};
 use derive_new::new;
-use lazy_static::lazy_static;
 use url::Url;
 
 use crate::crates_io::GetRepoUrlFromCrateNameError::RepositoryNotSpecified;
 
-lazy_static! {
-    pub static ref CRATES_IO_CLIENT: SyncClient = SyncClient::new("just-clone", std::time::Duration::from_millis(1000)).unwrap();
-}
-
-pub fn get_repo_url_from_crates_io_url(url: &Url) -> Result<Url, GetRepoUrlFromCratesIoUrlError> {
+pub async fn get_repo_url_from_crates_io_url(url: &Url) -> Result<Url, GetRepoUrlFromCratesIoUrlError> {
     let crate_name = get_crate_name_from_url(url)?;
-    let repository_field = get_repo_url_from_crate_name_static(crate_name)?;
+    // It should be safe to call .expect() on the next line
+    let client = AsyncClient::new("just-clone", std::time::Duration::from_millis(1000)).expect("All headers must be valid");
+    let repository_field = get_repo_url_from_crate_name(crate_name, &client).await?;
     let url = parse_url(&repository_field)?;
     Ok(url)
 }
 
-pub fn get_repo_url_from_crate_name_static(name: &str) -> Result<String, GetRepoUrlFromCrateNameError> {
-    get_repo_url_from_crate_name(name, &CRATES_IO_CLIENT)
-}
+// pub fn get_repo_url_from_crate_name_static(name: &str) -> Result<String, GetRepoUrlFromCrateNameError> {
+//     get_repo_url_from_crate_name(name, &CRATES_IO_CLIENT)
+// }
 
-pub fn get_repo_url_from_crate_name(name: &str, client: &SyncClient) -> Result<String, GetRepoUrlFromCrateNameError> {
-    let crate_info = client.get_crate(name)?;
+pub async fn get_repo_url_from_crate_name(name: &str, client: &AsyncClient) -> Result<String, GetRepoUrlFromCrateNameError> {
+    let crate_info = client.get_crate(name).await?;
     crate_info
         .crate_data
         .repository

@@ -13,7 +13,7 @@
 ## Installation
 
 ```shell
-cargo add just-clone url
+cargo install --locked just-clone
 ```
 
 **Important:** add the `url` crate too.

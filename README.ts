@@ -73,7 +73,7 @@ ${doc.stdout}
 ## Installation
 
 \`\`\`shell
-cargo add ${name} url
+cargo install --locked ${name}
 \`\`\`
 
 **Important:** add the \`url\` crate too.

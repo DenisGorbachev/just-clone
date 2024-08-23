@@ -1,5 +1,5 @@
-use crate::types::cli::{NameNotFoundError, OwnerNotFoundError, PathNotFoundError};
-use crate::types::outcome::Outcome;
+use crate::Outcome;
+use crate::{NameNotFoundError, OwnerNotFoundError, PathNotFoundError};
 use derive_more::Error;
 use derive_new::new;
 use fmt_derive::Display;

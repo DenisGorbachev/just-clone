@@ -1,9 +1,14 @@
-pub mod cli;
-pub mod command;
-pub mod outcome;
+mod cli;
+mod clone;
+mod command;
+mod crate_name;
+mod get_dir_fn;
+mod outcome;
+mod repository_info;
 
-pub type Todo = ();
-
-pub mod clone;
-pub mod get_dir_fn;
-pub mod repository_info;
+pub use cli::*;
+pub use clone::*;
+pub use command::*;
+pub use crate_name::*;
+pub use outcome::*;
+pub use repository_info::*;

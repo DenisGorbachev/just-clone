@@ -1,2 +1,5 @@
-pub mod get_path;
-pub mod get_url;
+mod get_path;
+mod get_url;
+
+pub use get_path::*;
+pub use get_url::*;

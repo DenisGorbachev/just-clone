@@ -3,13 +3,13 @@ use std::io::Write;
 use std::path::PathBuf;
 use url::Url;
 
-use crate::functions::get_url::get_url;
-use crate::types::outcome::Outcome;
+use crate::get_url;
+use crate::Outcome;
 
-pub async fn clone(url: Url, get_dir: impl FnOnce(&Url) -> Outcome<PathBuf>, _stdout: &mut impl Write, _stderr: &mut impl Write) -> Outcome<Repository> {
+pub async fn clone(url: Url, get_dir: impl FnOnce(&Url) -> Outcome<PathBuf>, stdout: &mut impl Write, _stderr: &mut impl Write) -> Outcome<Repository> {
     let repo_url = get_url(url).await?;
     let path_buf = get_dir(&repo_url)?;
-    dbg!(&path_buf.as_path());
+    writeln!(stdout, "Cloning into {}", path_buf.display())?;
     let repo = Repository::clone(repo_url.as_str(), path_buf.as_path())?;
     Ok(repo)
 }

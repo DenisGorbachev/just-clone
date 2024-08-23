@@ -1,4 +1,4 @@
-use crate::functions::get_path::get_path;
+use crate::get_path;
 use std::future::Future;
 use std::path::PathBuf;
 use url::Url;

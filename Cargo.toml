@@ -28,11 +28,14 @@ crates_io_api = { version = "0.11.0" }
 tokio = { version = "1.39.2", features = ["macros", "rt-multi-thread", "time"] }
 url-macro = "0.1.8"
 helpful = { path = "../helpful" }
+subtype = { path = "../subtype" }
 stub-macro = { version = "0.1.5" }
 octocrab = { version = "0.39.0" }
+not-found-error = "0.2.1"
 
 [dev-dependencies]
 tempfile = { version = "3.12.0" }
+#assert_matches = { version = "1.5.0" }
 
 [package.metadata.cargo-machete]
 ignored = ["stub_macro"]

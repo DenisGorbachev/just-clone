@@ -1,4 +1,4 @@
-use crate::functions::get_path::get_path;
+use crate::get_path;
 use crate::traits::get_dir::GetDir;
 use derive_new::new;
 use std::path::PathBuf;

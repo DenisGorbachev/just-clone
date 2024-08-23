@@ -1,6 +1,6 @@
 use std::io::Write;
 
-use crate::types::outcome::Outcome;
+use crate::Outcome;
 use clap::Parser;
 
 #[derive(Parser, Clone, Debug)]

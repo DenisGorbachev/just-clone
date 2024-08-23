@@ -789,8 +789,10 @@ dependencies = [
  "fmt-derive",
  "git2",
  "helpful",
+ "not-found-error",
  "octocrab",
  "stub-macro",
+ "subtype",
  "tempfile",
  "tokio",
  "url",
@@ -910,6 +912,12 @@ dependencies = [
  "security-framework-sys",
  "tempfile",
 ]
+
+[[package]]
+name = "not-found-error"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "87d75cb313e9a18d12a11e72a27884a47419c622fec63d61b0828c669aa1e71f"
 
 [[package]]
 name = "num-bigint"
@@ -1102,6 +1110,12 @@ name = "powerfmt"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "439ee305def115ba05938db6eb1644ff94165c5ab5e9420d1c1bcedbba909391"
+
+[[package]]
+name = "pretty-type-name"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f0f73cdaf19b52e6143685c3606206e114a4dfa969d6b14ec3894c88eb38bd4b"
 
 [[package]]
 name = "proc-macro-crate"
@@ -1457,6 +1471,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
 
 [[package]]
+name = "standard-traits"
+version = "0.1.0"
+
+[[package]]
 name = "strsim"
 version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1473,6 +1491,15 @@ name = "subtle"
 version = "2.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
+
+[[package]]
+name = "subtype"
+version = "0.1.0"
+dependencies = [
+ "derive_more",
+ "pretty-type-name",
+ "standard-traits",
+]
 
 [[package]]
 name = "syn"

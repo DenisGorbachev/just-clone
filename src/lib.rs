@@ -1,5 +1,13 @@
-pub mod crates_io;
+mod crates_io;
+mod docs_rs;
 mod functions;
-pub mod github_com;
-pub mod traits;
-pub mod types;
+mod github_com;
+mod traits;
+mod types;
+
+pub use crates_io::*;
+pub use docs_rs::*;
+pub use functions::*;
+pub use github_com::*;
+pub use traits::*;
+pub use types::*;

@@ -1,6 +1,6 @@
 use clap::Parser;
-use just_clone::types::cli::Cli;
-use just_clone::types::outcome::Outcome;
+use just_clone::Cli;
+use just_clone::Outcome;
 use std::io::{stderr, stdout};
 
 #[tokio::main]

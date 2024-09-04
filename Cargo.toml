@@ -17,7 +17,7 @@ summary = ""
 announcement = ""
 
 [dependencies]
-derive-new = { git = "https://github.com/OmarTawfik-forks/derive-new", branch = "impl-into" } # "0.6.0"
+derive-new = "0.7.0"
 derive_more = { version = "1.0.0", features = ["full"] }
 fmt-derive = "0.1.2"
 derive-getters = { version = "0.5.0", features = ["auto_copy_getters"] }
@@ -27,8 +27,9 @@ git2 = "0.19.0"
 crates_io_api = { version = "0.11.0" }
 tokio = { version = "1.39.2", features = ["macros", "rt-multi-thread", "time"] }
 url-macro = "0.1.8"
-helpful = { path = "../helpful" }
-subtype = { path = "../subtype" }
+helpful = { git = "https://github.com/DenisGorbachev/helpful" }
+subtype = { git = "https://github.com/DenisGorbachev/subtype" }
+#standard-traits = { git = "https://github.com/DenisGorbachev/standard-traits" }
 stub-macro = { version = "0.1.5" }
 octocrab = { version = "0.39.0" }
 not-found-error = "0.2.1"

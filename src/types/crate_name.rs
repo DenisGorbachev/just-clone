@@ -1,5 +1,5 @@
-use subtype::checkers::{Empty, Not};
 use subtype::newtype_string;
+use subtype::{Empty, Not};
 
 // TODO: Add crate name validation
 newtype_string! {

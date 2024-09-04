@@ -288,8 +288,9 @@ dependencies = [
 
 [[package]]
 name = "derive-new"
-version = "0.6.0"
-source = "git+https://github.com/OmarTawfik-forks/derive-new?branch=impl-into#8f608804e3cb8752a0690003f93d822d3041a9ba"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2cdc8d50f426189eef89dac62fabfa0abb27d5cc008f25bf4156a0203325becc"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -536,6 +537,7 @@ checksum = "2304e00983f87ffb38b55b444b5e3b60a884b5d30c0fca7d82fe33449bbe55ea"
 [[package]]
 name = "helpful"
 version = "0.1.0"
+source = "git+https://github.com/DenisGorbachev/helpful#8336976e53752a0b8822fd9951fb25156e724877"
 dependencies = [
  "tracing-error",
 ]
@@ -1473,6 +1475,7 @@ checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
 [[package]]
 name = "standard-traits"
 version = "0.1.0"
+source = "git+https://github.com/DenisGorbachev/standard-traits#08fd77b6b45f37408cc435ca03032c4e1b9a6574"
 
 [[package]]
 name = "strsim"
@@ -1495,6 +1498,7 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 [[package]]
 name = "subtype"
 version = "0.1.0"
+source = "git+https://github.com/DenisGorbachev/subtype#462a50accbd73422224efdb50b926c3af557483f"
 dependencies = [
  "derive_more",
  "pretty-type-name",

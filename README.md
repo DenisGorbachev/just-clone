@@ -5,10 +5,6 @@
 # Clone a repo from any url
 
 [![Build](https://github.com/DenisGorbachev/just-clone/actions/workflows/ci.yml/badge.svg)](https://github.com/DenisGorbachev/just-clone)
-[![Documentation](https://docs.rs/just-clone/badge.svg)](https://docs.rs/just-clone)
-
-
-
 
 ## Installation
 

@@ -9,10 +9,8 @@
 ## Installation
 
 ```shell
-cargo install --locked just-clone
+cargo add just-clone
 ```
-
-**Important:** add the `url` crate too.
 
 ## Gratitude
 

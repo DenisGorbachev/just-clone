@@ -30,7 +30,7 @@ octocrab = { version = "0.43.0" }
 #standard-traits = { git = "https://github.com/DenisGorbachev/standard-traits" }
 stub-macro = { version = "0.1.5" }
 subtype = { git = "https://github.com/DenisGorbachev/subtype" }
-tokio = { version = "1.39.2", features = ["macros", "rt-multi-thread", "time"] }
+tokio = { version = "1.43.1", features = ["macros", "rt-multi-thread", "time"] }
 url = "2.5.2"
 url-macro = "0.1.8"
 

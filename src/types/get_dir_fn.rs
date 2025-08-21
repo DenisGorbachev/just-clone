@@ -4,7 +4,7 @@ use derive_new::new;
 use std::path::PathBuf;
 use url::Url;
 
-#[derive(new, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy, Debug)]
+#[derive(new, Clone, Copy, Debug)]
 pub struct GetDirFn<Error> {
     pub inner: fn(&Url) -> Result<PathBuf, Error>,
 }

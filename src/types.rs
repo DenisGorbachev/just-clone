@@ -10,5 +10,6 @@ pub use cli::*;
 pub use clone::*;
 pub use command::*;
 pub use crate_name::*;
+pub use get_dir_fn::*;
 pub use outcome::*;
 pub use repository_info::*;

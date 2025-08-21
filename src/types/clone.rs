@@ -3,8 +3,8 @@ use std::io::Write;
 use std::path::PathBuf;
 use url::Url;
 
-use crate::get_url;
 use crate::Outcome;
+use crate::get_url;
 
 pub async fn clone(url: Url, get_dir: impl FnOnce(&Url) -> Outcome<PathBuf>, stdout: &mut impl Write, _stderr: &mut impl Write) -> Outcome<Repository> {
     let repo_url = get_url(url).await?;

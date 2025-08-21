@@ -42,11 +42,7 @@ pub fn get_crate_name_from_crates_io_url(url: &Url) -> Result<&str, GetCrateName
 }
 
 pub fn find_crate_name_in_path_segments<'a>(mut segments: impl Iterator<Item = &'a str>) -> Option<&'a str> {
-    if segments.next() == Some("crates") {
-        segments.next()
-    } else {
-        None
-    }
+    if segments.next() == Some("crates") { segments.next() } else { None }
 }
 
 #[derive(new, Error, Display, From, Debug)]

@@ -1,10 +1,10 @@
 use std::io::Write;
 use std::path::PathBuf;
 
+use crate::Outcome;
 use crate::get_path;
 use crate::types::clone::clone;
 use crate::types::command::Command;
-use crate::Outcome;
 use clap::Parser;
 use derive_more::Error;
 use fmt_derive::Display;

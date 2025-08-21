@@ -1,5 +1,5 @@
 use crate::Outcome;
-use crate::{get_repo_url_from_crate_name, CrateName};
+use crate::{CrateName, get_repo_url_from_crate_name};
 use derive_more::Error;
 use derive_new::new;
 use fmt_derive::Display;

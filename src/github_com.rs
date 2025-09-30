@@ -20,7 +20,7 @@ pub struct GithubCloneUrlNotFoundError;
 
 pub fn get_path_from_github_url(url: &Url) -> Outcome<PathBuf> {
     let (owner, name) = get_owner_name_from_github_url(url)?;
-    let path_buf = PathBuf::from(format!("{owner}@{name}"));
+    let path_buf = PathBuf::from(format!("{owner}•{name}"));
     Ok(path_buf)
 }
 

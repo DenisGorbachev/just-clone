@@ -36,7 +36,7 @@ mod tests {
         let name = "url-macro";
         let url = format!("https://github.com/{owner}/{name}").parse()?;
         clone(url, get_dir, stdout, stderr).await?;
-        let expected_repo_path = tempdir.path().join(format!("{owner}@{name}"));
+        let expected_repo_path = tempdir.path().join(format!("{owner}•{name}"));
         assert!(expected_repo_path.exists());
         Ok(())
     }

@@ -2,6 +2,7 @@
 name = "just-clone"
 version = "0.1.0"
 edition = "2024"
+rust-version = "1.85.0"
 description = "Clone a repo from any url"
 license = "Apache-2.0 OR MIT"
 homepage = "https://github.com/DenisGorbachev/just-clone"
@@ -9,6 +10,22 @@ repository = "https://github.com/DenisGorbachev/just-clone"
 readme = "README.md"
 keywords = ["utils", "git"]
 categories = ["command-line-utilities", "development-tools"]
+exclude = [
+    ".*",
+    "*.local.*",
+    "doc/dev",
+    "specs",
+    "README.ts",
+    "AGENTS*.md",
+    "CLAUDE*.md",
+    "deno.json",
+    "commitlint.config.mjs",
+    "lefthook.yml",
+    "mise.toml",
+    "rumdl.toml",
+    "rustfmt.toml",
+    "yolobox"
+]
 
 [package.metadata.details]
 title = "Clone a repo from any url"
@@ -21,14 +38,14 @@ clap = { version = "4.5.13", features = ["derive"] }
 crates_io_api = { version = "0.11.0" }
 derive-getters = { version = "0.5.0", features = ["auto_copy_getters"] }
 derive-new = "0.7.0"
-derive_more = { version = "2.0.1", features = ["full"] }
+derive_more = { version = "2.1.1", features = ["full"] }
 fmt-derive = "0.1.2"
 git2 = "0.20.4"
 helpful = { git = "https://github.com/DenisGorbachev/helpful" }
 not-found-error = "0.2.1"
 octocrab = { version = "0.43.0" }
 #standard-traits = { git = "https://github.com/DenisGorbachev/standard-traits" }
-stub-macro = { version = "0.1.5" }
+stub-macro = { version = "0.2.1" }
 subtype = { git = "https://github.com/DenisGorbachev/subtype" }
 tokio = { version = "1.39.2", features = ["macros", "rt-multi-thread", "time"] }
 url = "2.5.2"

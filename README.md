@@ -4,7 +4,11 @@
 
 # Clone a repo from any url
 
+[![Build](https://github.com/DenisGorbachev/just-clone/actions/workflows/ci.yml/badge.svg)](https://github.com/DenisGorbachev/just-clone)
 
+<!-- crate documentation start -->
+
+<!-- crate documentation end -->
 
 ## Installation
 

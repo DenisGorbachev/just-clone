@@ -971,7 +971,6 @@ dependencies = [
  "helpful",
  "not-found-error",
  "octocrab",
- "stub-macro",
  "subtype",
  "tempfile",
  "tokio",
@@ -1713,12 +1712,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
 
 [[package]]
-name = "stub-macro"
-version = "0.2.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b898e484f55f310f9513dd80f0b65c4e1030abc101fecffed6003baea6a4a853"
-
-[[package]]
 name = "subtle"
 version = "2.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2081,9 +2074,9 @@ dependencies = [
 
 [[package]]
 name = "url-macro"
-version = "0.1.13"
+version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "65ed176b1ee8bf71eb26d2444d718df594f2a8af10e82b678a259a320696cde2"
+checksum = "46f8fd02d998459be6962aa74831961202461c1545cf056725e2c73b9f860c91"
 dependencies = [
  "url",
 ]

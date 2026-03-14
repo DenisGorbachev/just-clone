@@ -45,11 +45,11 @@ helpful = { git = "https://github.com/DenisGorbachev/helpful" }
 not-found-error = "0.2.1"
 octocrab = { version = "0.43.0" }
 #standard-traits = { git = "https://github.com/DenisGorbachev/standard-traits" }
-stub-macro = { version = "0.2.1" }
+#stub-macro = { version = "0.2.1" }
 subtype = { git = "https://github.com/DenisGorbachev/subtype" }
 tokio = { version = "1.39.2", features = ["macros", "rt-multi-thread", "time"] }
 url = "2.5.2"
-url-macro = "0.1.8"
+url-macro = "0.2.3"
 
 [dev-dependencies]
 tempfile = { version = "3.12.0" }

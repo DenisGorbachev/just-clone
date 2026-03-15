@@ -11,12 +11,12 @@ pub async fn get_repo_url_from_github_com_url(url: &Url) -> Outcome<Url> {
     let (owner, name) = get_owner_name_from_github_url(url)?;
     let octocrab = Octocrab::builder().build()?;
     let repository = octocrab.repos(owner, name).get().await?;
-    let clone_url = repository.clone_url.ok_or(GithubCloneUrlNotFoundError)?;
-    Ok(clone_url)
+    let repo_url = repository.clone_url.ok_or(GithubRepoUrlNotFoundError)?;
+    Ok(repo_url)
 }
 
 #[derive(new, Error, Display, Eq, PartialEq, Hash, Clone, Debug)]
-pub struct GithubCloneUrlNotFoundError;
+pub struct GithubRepoUrlNotFoundError;
 
 pub fn get_path_from_github_url(url: &Url) -> Outcome<PathBuf> {
     let (owner, name) = get_owner_name_from_github_url(url)?;

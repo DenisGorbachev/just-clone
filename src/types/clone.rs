@@ -14,10 +14,6 @@ pub async fn clone(url: Url, get_dir: impl FnOnce(&Url) -> Outcome<PathBuf>, std
     Ok(repo)
 }
 
-pub async fn clone_from_str(url: &str, get_dir: impl FnOnce(&Url) -> Outcome<PathBuf>, stdout: &mut impl Write, stderr: &mut impl Write) -> Outcome<Repository> {
-    clone(url.parse()?, get_dir, stdout, stderr).await
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;

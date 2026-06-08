@@ -47,12 +47,17 @@ Notes:
 * After finishing the task: run `mise run agent:on:stop` (this command runs the lints and tests)
   * `mise run agent:on:stop` may modify `README.md`, `AGENTS.md`, `Cargo.toml` (this is normal, don't mention it)
   * `mise run agent:on:stop` includes `cargo fmt`, `cargo check`, `cargo clippy`, `cargo nextest` (no need to run them separately)
+* After finishing the original task, improve the code:
+  * Remove unnecessary code
+  * Remove unnecessary allocations
+  * Refactor code that converts between types into `From` / `Into` impls
 * Don't edit the files in the following top-level dirs: `specs`, `.agents`
 * Don't write the tests unless I ask you explicitly
 * If a later instruction overrides the former instruction: follow the later instruction (last override wins).
 * If you need to patch a dependency, tell me about it, but don't do it without my explicit permission
 * If you notice unexpected edits, keep them
 * If you notice incorrect code, tell me
+* If you have to apply a workaround, add a comment next to the workaround that explains why it is necessary, and also mention the workaround in your final report
 * If the task can't be completed exactly as it is written (for example, due to limitations in the language or dependencies, or due to incorrect assumptions in the specification), `touch` the blockers.md file and append a list of blockers to it:
   * Each blocker must be a list item with a description and a child list of workarounds
     * description must start with "{id}: "
@@ -64,6 +69,7 @@ Notes:
   * Examples
     * A task to write `impl From<Foo> for Bar` where `Foo` can't actually be infallibly converted to `Bar` (would require calling `unwrap`, which is bad) - in this case you should write `impl TryFrom<Foo> for Bar` and reply with "Foo can't be infallibly converted to Bar, so I implemented a fallible conversion instead".
     * A task to write a trait impl that only returns an error - in this case you should not write the trait impl but reply with "trait X can't be implemented for Foo because ..."
+* If you resolve the blockers, remove them from blockers.md
 
 ## Review workflow
 
@@ -84,7 +90,7 @@ Notes:
 
 * Use `fd` and `rg` instead of `find` and `grep`
 * Use `cargo add` to add dependencies at their latest versions
-* Set the timeout to 300000 ms for the following commands: `mise run agent:on:stop`, `cargo build`, `git commit`
+* Set the timeout and `yield_time_ms` to at least 300000 ms for the following commands: `mise run agent:on:stop`, `cargo build`, `git commit`
 
 ## Recommended crates
 
@@ -147,6 +153,16 @@ Notes:
 ## Items
 
 * Prefer `pub` instead of `pub(crate)` or private.
+
+## Layout
+
+* Generic helper functions must be in `src/functions` folder
+
+The general layout guidelines may be overridden by more specific layout guidelines below.
+
+## Constants
+
+* Define constants only for values used in multiple places (prefer inline values)
 
 ## Types
 
@@ -414,6 +430,7 @@ A function marked with `#[test]` or `#[tokio::test]`.
 
 * For shell scripts and commands that will be read by the user (written per direct request of the user):
   * Use long options
+  * Use `echo` with inline args instead of `printf`
 * For shell scripts and commands what won't be read by the user (written to accomplish a local task):
   * Use short options
 

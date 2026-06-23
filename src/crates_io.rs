@@ -1,6 +1,7 @@
-use crates_io_api::AsyncClient;
+use crates_io_api::{AsyncClient, Error as CratesIoApiError};
 use derive_more::{Display, Error, From};
 use derive_new::new;
+use std::time::Duration;
 use url::Url;
 
 use crate::crates_io::GetRepoUrlFromCrateNameError::RepositoryNotSpecified;
@@ -12,7 +13,7 @@ pub async fn get_repo_url_from_crates_io_url(url: &Url) -> Result<Url, GetRepoUr
 
 pub async fn get_repo_url_from_crate_name(crate_name: &str) -> Result<Url, GetRepoUrlFromCratesIoUrlError> {
     // It should be safe to call .expect() on the next line
-    let client = AsyncClient::new("just-clone", std::time::Duration::from_millis(1000)).expect("All headers must be valid");
+    let client = AsyncClient::new("just-clone", Duration::from_millis(1000)).expect("All headers must be valid");
     let repository_field = get_repo_url_from_crate_name_and_client(crate_name, &client).await?;
     let url = parse_url(&repository_field)?;
     Ok(url)
@@ -55,7 +56,7 @@ pub enum GetRepoUrlFromCratesIoUrlError {
 #[derive(new, Error, Display, From, Debug)]
 pub enum GetRepoUrlFromCrateNameError {
     RepositoryNotSpecified,
-    CratesIoApiError(crates_io_api::Error),
+    CratesIoApiError(CratesIoApiError),
 }
 
 #[derive(new, Error, Display, Eq, PartialEq, Hash, Clone, Debug)]

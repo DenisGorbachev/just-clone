@@ -1,6 +1,7 @@
 use crate::get_path;
 use crate::traits::get_dir::GetDir;
 use derive_new::new;
+use helpful::Error as HelpfulError;
 use std::path::PathBuf;
 use url::Url;
 
@@ -9,7 +10,7 @@ pub struct GetDirFn<Error> {
     pub inner: fn(&Url) -> Result<PathBuf, Error>,
 }
 
-impl Default for GetDirFn<helpful::Error> {
+impl Default for GetDirFn<HelpfulError> {
     fn default() -> Self {
         Self {
             inner: get_path,

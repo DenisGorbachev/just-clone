@@ -1,1 +1,3 @@
-pub type Outcome<T = ()> = helpful::Result<T>;
+use helpful::Result as HelpfulResult;
+
+pub type Outcome<T = ()> = HelpfulResult<T>;

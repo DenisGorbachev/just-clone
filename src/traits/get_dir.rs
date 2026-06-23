@@ -1,4 +1,5 @@
 use crate::get_path;
+use helpful::Error as HelpfulError;
 use std::future::Future;
 use std::path::PathBuf;
 use url::Url;
@@ -18,7 +19,7 @@ impl GetDir for PathBuf {
 }
 
 impl GetDir for Option<PathBuf> {
-    type Error = helpful::Error;
+    type Error = HelpfulError;
 
     async fn get_dir(self, url: &Url) -> Result<PathBuf, Self::Error> {
         match self {

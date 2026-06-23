@@ -471,6 +471,14 @@ You are running in a sandbox with limited network access.
 
 * The macro calls that begin with `subtype` (for example, `subtype!` and `subtype_string!`) expand to newtypes.
 
+## Guidelines for `clap`
+
+### Requirements
+
+* For each enum in project:
+  * If enum has only unit variants and doesn't implement `Error`
+    * Then: it must derive `ValueEnum` with `#[value(rename_all = "kebab-case")]`
+
 ## CLI guidelines
 
 ### Dependencies

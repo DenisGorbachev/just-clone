@@ -1,6 +1,5 @@
 use crate::get_path;
 use helpful::Error as HelpfulError;
-use std::future::Future;
 use std::path::PathBuf;
 use url::Url;
 

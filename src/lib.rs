@@ -1,5 +1,3 @@
-#![cfg_attr(not(test), deny(unused_crate_dependencies))]
-
 use tokio as _;
 
 mod crates_io;

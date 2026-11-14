@@ -898,6 +898,9 @@ name = "just-clone"
 title = "Clone a repository from any URL"
 readme = { }
 
+[workspace.lints.cargo]
+unused_dependencies = "deny"
+
 [workspace.lints.rust]
 redundant_imports = "deny"
 unused_import_braces = "deny"
@@ -957,8 +960,6 @@ ignored = ["stub-macro"]
 ### src/lib.rs
 
 ```rust
-#![cfg_attr(not(test), deny(unused_crate_dependencies))]
-
 use tokio as _;
 
 mod crates_io;

@@ -15,7 +15,7 @@ pub async fn clone(url: Url, get_dir: impl FnOnce(&Url) -> Outcome<PathBuf>, std
 }
 
 #[cfg(test)]
-mod tests {
+mod integration_tests {
     use super::*;
     use crate::types::cli::convert_parent_dir_to_closure;
     use std::io::{stderr, stdout};

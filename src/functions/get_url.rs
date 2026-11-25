@@ -36,7 +36,7 @@ pub struct MaxUrlResolutionIterationsExceededError {
 }
 
 #[cfg(test)]
-mod tests {
+mod integration_tests {
     use url_macro::url;
 
     use crate::Outcome;

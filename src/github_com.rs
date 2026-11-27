@@ -1,35 +1,46 @@
-use crate::Outcome;
-use crate::{NameNotFoundError, OwnerNotFoundError, PathNotFoundError};
-use derive_more::Error;
-use derive_new::new;
-use fmt_derive::Display;
+use core::ops::Not;
+use errgonomic::{handle, handle_opt};
 use octocrab::Octocrab;
-use std::path::PathBuf;
+use thiserror::Error;
 use url::Url;
 
-pub async fn get_repo_url_from_github_com_url(url: &Url) -> Outcome<Url> {
-    let (owner, name) = get_owner_name_from_github_url(url)?;
-    let octocrab = Octocrab::builder().build()?;
-    let repository = octocrab.repos(owner, name).get().await?;
-    let repo_url = repository.clone_url.ok_or(GithubRepoUrlNotFoundError)?;
+pub async fn get_repo_url_from_github_com_url(url: &Url) -> Result<Url, GetRepoUrlFromGithubComUrlError> {
+    use GetRepoUrlFromGithubComUrlError::*;
+    let (owner, name) = handle!(get_owner_name_from_github_url(url), GetOwnerNameFromGithubUrlFailed);
+    let octocrab = handle!(Octocrab::builder().build(), OctocrabBuildFailed);
+    let repository = handle!(octocrab.repos(owner, name).get().await, ReposGetFailed, owner, name);
+    let repo_url = handle_opt!(repository.clone_url, CloneUrlNotFound, owner, name);
     Ok(repo_url)
 }
 
-#[derive(new, Error, Display, Eq, PartialEq, Hash, Clone, Debug)]
-pub struct GithubRepoUrlNotFoundError;
-
-pub fn get_path_from_github_url(url: &Url) -> Outcome<PathBuf> {
-    let (owner, name) = get_owner_name_from_github_url(url)?;
-    let path_buf = PathBuf::from(format!("{owner}•{name}"));
-    Ok(path_buf)
+#[derive(Error, Debug)]
+pub enum GetRepoUrlFromGithubComUrlError {
+    #[error("failed to get owner and name from GitHub URL")]
+    GetOwnerNameFromGithubUrlFailed { source: GetOwnerNameFromGithubUrlError },
+    #[error("failed to build GitHub client")]
+    OctocrabBuildFailed { source: Box<octocrab::Error> },
+    #[error("failed to get GitHub repo '{owner}/{name}'")]
+    ReposGetFailed { source: Box<octocrab::Error>, owner: String, name: String },
+    #[error("GitHub repo '{owner}/{name}' has no clone URL")]
+    CloneUrlNotFound { owner: String, name: String },
 }
 
-pub fn get_owner_name_from_github_url(url: &Url) -> Outcome<(&str, &str)> {
-    let mut segments = url.path_segments().ok_or(PathNotFoundError)?;
-    let owner = segments.next().ok_or(OwnerNotFoundError)?;
-    let name = segments.next().ok_or(NameNotFoundError)?;
-    let name = name.trim_end_matches(".git");
+pub fn get_owner_name_from_github_url(url: &Url) -> Result<(&str, &str), GetOwnerNameFromGithubUrlError> {
+    use GetOwnerNameFromGithubUrlError::*;
+    let mut segments = handle_opt!(url.path_segments(), PathSegmentsNotFound, url: url.clone());
+    let owner = handle_opt!(segments.next().filter(|segment| segment.is_empty().not()), OwnerNotFound, url: url.clone());
+    let name = handle_opt!(segments.next().map(|segment| segment.trim_end_matches(".git")).filter(|name| name.is_empty().not()), NameNotFound, url: url.clone());
     Ok((owner, name))
+}
+
+#[derive(Error, Debug)]
+pub enum GetOwnerNameFromGithubUrlError {
+    #[error("URL '{url}' has no path segments")]
+    PathSegmentsNotFound { url: Url },
+    #[error("URL '{url}' has no owner segment")]
+    OwnerNotFound { url: Url },
+    #[error("URL '{url}' has no name segment")]
+    NameNotFound { url: Url },
 }
 
 #[cfg(test)]

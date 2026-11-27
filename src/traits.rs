@@ -1,1 +1,3 @@
-pub mod get_dir;
+mod get_dir;
+
+pub use get_dir::*;

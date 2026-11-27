@@ -1,5 +1,5 @@
-use crate::get_path;
-use helpful::Error as HelpfulError;
+use crate::{GetPathError, get_path};
+use core::convert::Infallible;
 use std::path::PathBuf;
 use url::Url;
 
@@ -10,7 +10,7 @@ pub trait GetDir {
 }
 
 impl GetDir for PathBuf {
-    type Error = ();
+    type Error = Infallible;
 
     async fn get_dir(self, _url: &Url) -> Result<PathBuf, Self::Error> {
         Ok(self)
@@ -18,7 +18,7 @@ impl GetDir for PathBuf {
 }
 
 impl GetDir for Option<PathBuf> {
-    type Error = HelpfulError;
+    type Error = GetPathError;
 
     async fn get_dir(self, url: &Url) -> Result<PathBuf, Self::Error> {
         match self {

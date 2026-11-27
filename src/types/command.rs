@@ -1,6 +1,6 @@
 use std::io::Write;
+use std::process::ExitCode;
 
-use crate::Outcome;
 use clap::Parser;
 
 #[derive(Parser, Clone, Debug)]
@@ -11,7 +11,7 @@ pub enum Command {
 use Command::*;
 
 impl Command {
-    pub async fn run(self, _stdout: &mut impl Write, _stderr: &mut impl Write) -> Outcome {
+    pub async fn run(self, _stdout: &mut impl Write, _stderr: &mut impl Write) -> ExitCode {
         match self {
             Autocomplete => todo!(),
         }

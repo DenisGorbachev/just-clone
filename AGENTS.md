@@ -1577,8 +1577,6 @@ workspace = true
 [dependencies]
 clap = { version = "4.5.13", features = ["derive"] }
 crates_io_api = { version = "0.11.0" }
-derive-getters = { version = "0.5.0", features = ["auto_copy_getters"] }
-derive-new = "0.7.0"
 derive_more = { version = "2.1.1", features = ["full"] }
 errgonomic = "0.6.0"
 git2 = "0.20.4"
@@ -1608,14 +1606,12 @@ mod crates_io;
 mod docs_rs;
 mod functions;
 mod github_com;
-mod traits;
 mod types;
 
 pub use crates_io::*;
 pub use docs_rs::*;
 pub use functions::*;
 pub use github_com::*;
-pub use traits::*;
 pub use types::*;
 ```
 
